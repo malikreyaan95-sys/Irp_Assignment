@@ -64,6 +64,30 @@ def add_student():
     students.append(student)
 
 
-if __name__ == "__main__":
+def print_table(students):
+    """Print a neatly formatted result table."""
+    print(f"{'Roll':<6}{'Name':<16}{'Apt':>5}{'Verb':>6}{'Code':>6}{'Avg':>8}  Grade")
+    print("-" * 58)
+    for s in students:
+        avg = average(s)
+        print(f"{s['roll_no']:<6}{s['name']:<16}{s['aptitude']:>5}{s['verbal']:>6}"
+              f"{s['coding']:>6}{avg:>8.2f}  {grade(avg)}")
+
+
+def main():
     add_student()
-    print(f"{len(students)} students loaded")
+    print("\n=== Placement Readiness Results ===")
+    print_table(students)
+    best = top_scorer(students)
+    print(f"\nTop scorer: {best['name']} (average {average(best):.2f})")
+    print("Students needing extra practice:")
+    weak = needs_practice(students)
+    if weak:
+        for s in weak:
+            print(f"  - {s['name']} (average {average(s):.2f})")
+    else:
+        print("  None")
+
+
+if __name__ == "__main__":
+    main()
