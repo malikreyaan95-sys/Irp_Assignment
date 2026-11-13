@@ -26,6 +26,16 @@ def grade(avg):
     return "Needs practice"
 
 
+def top_scorer(students):
+    """Return the student with the highest average."""
+    return max(students, key=average)
+
+
+def needs_practice(students, limit=40):
+    """Return the students whose average is below limit."""
+    return [s for s in students if average(s) < limit]
+
+
 def read_score(subject):
     """Keep asking until the user enters an integer between 0 and 100."""
     while True:
