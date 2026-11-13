@@ -9,6 +9,23 @@ students = [
     {"name": "Rohan Gupta",  "roll_no": 2305, "aptitude": 60, "verbal": 45, "coding": 70},
 ]
 
+# Task 2: functions
+def average(student):
+    """Return the mean of the three scores."""
+    return (student["aptitude"] + student["verbal"] + student["coding"]) / 3
+
+
+def grade(avg):
+    """Return the grade for an average mark."""
+    if avg >= 80:
+        return "A"
+    elif avg >= 60:
+        return "B"
+    elif avg >= 40:
+        return "C"
+    return "Needs practice"
+
+
 def read_score(subject):
     """Keep asking until the user enters an integer between 0 and 100."""
     while True:
