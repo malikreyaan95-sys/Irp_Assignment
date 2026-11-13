@@ -9,5 +9,34 @@ students = [
     {"name": "Rohan Gupta",  "roll_no": 2305, "aptitude": 60, "verbal": 45, "coding": 70},
 ]
 
+def read_score(subject):
+    """Keep asking until the user enters an integer between 0 and 100."""
+    while True:
+        text = input(f"Enter {subject} score (0-100): ")
+        try:
+            value = int(text)          # input() gives str, so convert
+        except ValueError:
+            print("  Please enter a whole number.")
+            continue
+        if 0 <= value <= 100:
+            return value
+        print("  Score must be between 0 and 100. Try again.")
+
+
+def add_student():
+    """Read one student from the keyboard and append to the list."""
+    name = input("Enter student name: ").strip()
+    roll_no = int(input("Enter roll number: "))
+    student = {
+        "name": name,
+        "roll_no": roll_no,
+        "aptitude": read_score("aptitude"),
+        "verbal": read_score("verbal"),
+        "coding": read_score("coding"),
+    }
+    students.append(student)
+
+
 if __name__ == "__main__":
+    add_student()
     print(f"{len(students)} students loaded")
