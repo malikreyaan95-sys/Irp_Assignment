@@ -66,11 +66,11 @@ def add_student():
 
 def print_table(students):
     """Print a neatly formatted result table."""
-    print(f"{'Roll':<6}{'Name':<16}{'Apt':>5}{'Verb':>6}{'Code':>6}{'Avg':>8}  Grade")
+    print(f"{'Roll':<8}{'Name':<16}{'Apt':>5}{'Verb':>6}{'Code':>6}{'Avg':>8}  Grade")
     print("-" * 58)
     for s in students:
         avg = average(s)
-        print(f"{s['roll_no']:<6}{s['name']:<16}{s['aptitude']:>5}{s['verbal']:>6}"
+        print(f"{s['roll_no']:<8}{s['name']:<16}{s['aptitude']:>5}{s['verbal']:>6}"
               f"{s['coding']:>6}{avg:>8.2f}  {grade(avg)}")
 
 
